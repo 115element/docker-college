@@ -26,6 +26,4 @@ docker run \
 redis-server /etc/redis/redis.conf     //redis将以 /etc/redis/redis.conf为配置文件启动
 --requirepass "123456"                 //redis密码设置 
 --appendonly yes　　                    //开启redis的AOF持久化，默认为false，不持久化
-
-
 >
