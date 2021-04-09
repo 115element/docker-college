@@ -41,6 +41,7 @@ docker run
   --privileged=true 
   nginx
 ```
+
 ```shell
 docker run -itd -p 80:80 --name nginx -v /h/volumes/nginx/html:/usr/share/nginx/html -v /h/volumes/nginx/logs:/var/log/nginx -v /h/volumes/nginx/nginx.conf:/etc/nginx/nginx.conf -v /h/volumes/nginx/conf.d:/etc/nginx/conf.d --restart=always --privileged=true nginx
 ```

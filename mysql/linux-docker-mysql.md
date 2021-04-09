@@ -22,7 +22,7 @@ docker run \
 
 > 提前要在提定的位置（我的位置是：/home/data）创建以下文件夹或文件：
 > mysql/data                          是数据库文件存放的地方。必须要挂载到容器外，否则容器重启一切数据消失。
-> mysql/log                           是数据库主生的log。建议挂载到容器外。
+> mysql/log                           是数据库生成的log。建议挂载到容器外。
 > mysql/config/my.cnf                 是数据库的配置文件，在下面会放出来。
 > /etc/localtime:/etc/localtime:ro    是让容器的时钟与宿主机时钟同步，避免时区的问题，ro是read only的意思，就是只读。 
 
