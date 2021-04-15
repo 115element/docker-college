@@ -73,5 +73,5 @@ docker run -v /path-to-folder/non-existent-config.js:/path-to-folder/config.js t
 docker cp nginx:/etc/nginx  H:\volumes\nginx
 
 复制宿主机文件到容器中:
-docker cp H:\volumes\nginx  nginx:/etc/nginx
+docker cp H:\volumes\nginx  nginx:/etc/nginx 
 ```

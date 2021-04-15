@@ -23,6 +23,7 @@ docker run
 ```
 ```shell
 docker run --name mysql8 -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /h/volumes/mysql/data:/var/lib/mysql:rw -v /h/volumes/mysql/log:/var/log/mysql:rw -v /h/volumes/mysql/config/my.cnf:/etc/mysql/my.cnf:rw  -v /h/volumes/mysql/mysql-files:/var/lib/mysql-files/ --privileged=true --restart=always -d mysql:8.0.13
+docker run --name mysql8 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /d/volumes/mysql/data:/var/lib/mysql:rw -v /d/volumes/mysql/log:/var/log/mysql:rw -v /d/volumes/mysql/config/my.cnf:/etc/mysql/my.cnf:rw  -v /d/volumes/mysql/mysql-files:/var/lib/mysql-files/ --privileged=true --restart=always -d mysql:8.0.13
 ```
 >注意：-v /h/volumes/mysql/config/my.cnf:/etc/mysql/my.cnf:rw 这一句最后的my.cnf不会创建为文件，而是docker帮你创建了一个文件夹，你需要手动创建my.cnf文件在该目录
 > 而且如果你的容器已经启动，那么你修改该配置，会自动映射到docker容器内指定的文件，很神奇偶

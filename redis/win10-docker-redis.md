@@ -23,7 +23,8 @@ docker run \
     redis:5.0.9 
 ```
 ```shell
-docker run -itd --name redis5 -p 6379:6379 -v /h/volumes/redis/redis.conf:/etc/redis/redis.conf:rw -v /h/volumes/redis/data:/data:rw --restart always --privileged=true redis:5.0.9 
+docker run -itd --name redis5 -p 6379:6379 -v /h/volumes/redis/redis.conf:/etc/redis/redis.conf:rw -v /h/volumes/redis/data:/data:rw --restart always --privileged=true redis:5.0.9
+docker run -itd --name redis5 -p 6379:6379 -v /d/volumes/redis/redis.conf:/etc/redis/redis.conf:rw -v /d/volumes/redis/data:/data:rw --restart always --privileged=true redis:5.0.9
 ```
 
 
