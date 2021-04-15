@@ -1,0 +1,33 @@
+version: '2.2' #需要和Docker版本进行对应,不是乱写的
+services:
+  redis:
+    image: library/redis:5.0.9
+    container_name: redis5
+    restart: always
+    privileged: true #是否让docker应用容器获取宿主机root权限(特殊权限-)
+    network_mode: "bridge"
+    ports:
+      - "6379:6379"
+    volumes:
+      - /h/volumes/redis/redis.conf:/etc/redis/redis.conf:rw
+      - /h/volumes/redis/data:/data:rw
+    environment:
+      - TZ=Asia/Shanghai
+
+  mysql:
+    image: library/mysql:8.0.13
+    container_name: mysql8
+    restart: always
+    privileged: true
+    network_mode: "bridge"
+    ports:
+      - "3306:3306"
+    volumes:
+      - /h/volumes/mysql/data:/var/lib/mysql:rw
+      - /h/volumes/mysql/log:/var/log/mysql:rw
+      - /h/volumes/mysql/config/my.cnf:/etc/mysql/my.cnf:rw
+      - /h/volumes/mysql/mysql-files:/var/lib/mysql-files:rw
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=123456
+      - lower_case_table_names=1 #忽略表名大小写
