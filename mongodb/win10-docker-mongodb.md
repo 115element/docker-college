@@ -10,18 +10,19 @@ docker pull mongo:latest
 
 运行容器
 ```shell
-docker run --name mongodb -p 27017:27017 -v /d/volumes/mongo/data:/data/db -d mongo:latest --auth
+docker run --name mongodb -p 27017:27017 -v /d/volumes/mongo/config:/data/configdb -v /d/volumes/mongo/data:/data/db --restart=always --privileged=true -d mongo:latest --auth 
 ```
 
 
 
 #为MongoDB添加管理员用户
-1.进入MongoDB
+1.以管理员身份进入MongoDB
 ```shell
-docker exec -it 51a5b5e05fe4 mongo admin
+docker exec -it 镜像id mongo admin
 ```
 2.创建一个 admin 管理员账号：
 ```shell
+use admin
 db.createUser({ user: 'root', pwd: 'root', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
 ```
 3.退出
