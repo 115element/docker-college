@@ -9,8 +9,9 @@ docker pull mongo:latest
 ```
 
 运行容器
+"./data/configdb:/data/configdb"
 ```shell
-docker run --name mongodb -p 27017:27017 -v /d/volumes/mongo/config:/data/configdb -v /d/volumes/mongo/data:/data/db --restart=always --privileged=true -d mongo:latest --auth 
+docker run --name mongodb -p 27017:27017 -v /d/volumes/mongo/data/configdb:/data/configdb -v /d/volumes/mongo/data:/data/db --restart=always --privileged=true -d mongo:latest --auth 
 ```
 
 
