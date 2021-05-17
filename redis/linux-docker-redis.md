@@ -12,7 +12,9 @@ docker run \
     -p 6379:6379 \
     -v /usr/redis/redis.conf:/etc/redis/redis.conf \
     -v /usr/redis/data:/data \
-    --name redis5 redis:5.0.9 redis-server /etc/redis/redis.conf
+    --name redis5 
+    redis-server /etc/redis/redis.conf
+    redis:5.0.9 
 ```
 
 > 参数说明：
