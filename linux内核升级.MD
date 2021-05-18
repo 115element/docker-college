@@ -37,8 +37,7 @@ yum install hmaccalc zlib-devel binutils-devel elfutils-libelf-devel  //创建 C
                                                                       //如果当初安装系统是选择了Software workstation,上面的安装包几乎都已包含.
 ```
 
-#5.获取并解压内核源码，配置编译项
-A.下载内核源码包
+#5.获取（下载内核源码包）
 方式1(手动去指定网址下载):  https://www.kernel.org/pub/linux/kernel/v3.x/下载
 方式2(wget命令下载):      wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.tar.gz 命令下载内核源码
 方式3(手动下载):          去http://www.kernel.org首页,可以看到有stable,longterm等版本,longterm是比stable更稳定的版本,会长时间更新
@@ -46,13 +45,11 @@ A.下载内核源码包
 
 #6.解压下载好的内核源码文件
 ————————————————
-解压缩命令：
-tar -xvf 内核源码压缩包名 -C 目的文件夹
-目的文件夹:
+解压缩命令： [tar -xvf 内核源码压缩包名 -C 目的文件夹]
+目的文件夹(根据不同的linux种类和版本填写符合操作系统的路径):
 有可能是/usr/src/kernel/，
 有可能是/usr/src，
 有可能是/usr/src/redhat，
-根据不同的linux种类和版本填写符合操作系统的路径。
 ————————————————
 [root@sean ~]# tar -xf linux-3.10.58.tar.gz -C /usr/src/                    //解压指定的内核源码文件到指定路径
 [root@sean ~]# cd /usr/src/linux-3.10.58/                                   //切换到源码文件解压到的路径                 
@@ -61,6 +58,7 @@ tar -xvf 内核源码压缩包名 -C 目的文件夹
 
 #7.我们在系统原有的内核配置文件的基础上建立新的编译选项，所以复制一份到当前目录下，命名为.config。接下来继续配置：
 [root@sean linux-3.10.58]# sh -c 'yes "" | make oldconfig'
+```outPut
 HOSTCC scripts/basic/fixdep
 ... ...
 XZ decompressor tester (XZ_DEC_TEST) [N/m/y/?] (NEW)
@@ -68,10 +66,9 @@ Averaging functions (AVERAGE) [Y/?] (NEW) y
 CORDIC algorithm (CORDIC) [N/m/y/?] (NEW)
 JEDEC DDR data (DDR) [N/y/?] (NEW)
  configuration written to .config
-
+```
 make oldconfig会读取当前目录下的.config文件，在.config文件里没有找到的选项则提示用户填写。
 make oldconfig会在生成新的.config之前备份为.config.old，并生成新的.config文件
-
 
 
 #8.开始编译
@@ -92,8 +89,7 @@ CONFIG_VMWARE_BALLOON=m
 
 ###10.修改grub引导，重启###
 安装完成后，需要修改Grub引导顺序，让新安装的内核作为默认内核。
-编辑grub.conf文件，
-vi /etc/grub.conf
+编辑grub.conf文件; [vi /etc/grub.conf]
 ```text
 default=0 
 ```
