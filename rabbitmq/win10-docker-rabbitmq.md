@@ -24,6 +24,10 @@ docker run
 docker run -d --name rabbitmq3.7.7 -p 5672:5672 -p 15672:15672 -v /h/volumes/rabbitmq/data:/var/lib/rabbitmq --hostname myRabbit -e RABBITMQ_DEFAULT_VHOST=my_vhost  -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin -e TZ=Asia/Shanghai --restart=always --privileged=true  rabbitmq:3.7.7-management
 ```
 
+#安装之后浏览器访问http://localhost:15672
+1.添加用户guest
+2.点开Virtual Hosts管理,删除默认已有的虚拟机my_vhost，然后添加name为 / 的虚拟机   
+
 #3.参数说明
 ```text
 说明：
